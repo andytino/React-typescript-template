@@ -6,7 +6,7 @@ import HomeContainer from './pages/Home/container/HomeContainer'
 
 function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <HomeContainer />
     </div>
   )
