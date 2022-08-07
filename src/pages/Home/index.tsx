@@ -1,1 +1,1 @@
-export * from './container/HomeContainer'
+export * from './container/Home'

@@ -4,6 +4,7 @@
     "es2021": true
   },
   "extends": [
+    "plugin:react/jsx-runtime",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
@@ -21,6 +22,8 @@
   "rules": {
     "indent": ["error", 2],
     "@typescript-eslint/no-explicit-any": "error",
-    "react-hooks/rules-of-hooks": "error"
+    "react-hooks/rules-of-hooks": "error",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off"
   }
 }

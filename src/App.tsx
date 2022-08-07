@@ -1,15 +1,11 @@
-import React from 'react'
-
 import './App.css'
 import '@/styles/index.scss'
-import HomeContainer from './pages/Home/container/HomeContainer'
+import {useRoutes} from 'react-router-dom'
+import {createRoutes} from './routes/index'
 
 function App() {
-  return (
-    <div className="App">
-      <HomeContainer />
-    </div>
-  )
+  const routes = useRoutes(createRoutes())
+  return <div className="App">{routes}</div>
 }
 
 export default App
