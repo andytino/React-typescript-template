@@ -1,1 +1,1 @@
-export * from './container/Home'
+export { default } from './container/Home'
