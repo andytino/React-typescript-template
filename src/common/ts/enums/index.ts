@@ -1,16 +1,17 @@
 export enum MODE_ROUTE {
-  private,
-  public
+  PRIVATE,
+  PUBLIC
 }
 
 export enum MODE_LAYOUT {
-  default,
-  main
+  DEFAULT,
+  MAIN
 }
 
 export enum EROLES {
-  user,
-  admin,
-  superAdmin,
-  all = 99
+  USER,
+  ADMIN,
+  SUPER_ADMIN,
+  GUEST,
+  ALL = 99
 }

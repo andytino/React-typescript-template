@@ -1,3 +1,4 @@
+import { useAuth } from '@/hooks/useAuth'
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
 
 interface PrivateProps {
@@ -6,6 +7,9 @@ interface PrivateProps {
 
 const PrivateRoute = (props: PrivateProps) => {
   console.log('PrivateRoute')
+  const { user } = useAuth()
+  console.log('useAuth 2', user)
+
   const auth = false
   const location = useLocation()
   if (auth) {
