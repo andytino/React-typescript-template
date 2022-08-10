@@ -6,14 +6,11 @@ interface PrivateProps {
 }
 
 const PrivateRoute = (props: PrivateProps) => {
-  console.log('PrivateRoute')
   const { user } = useAuth()
-  console.log('useAuth 2', user)
-
   const auth = false
   const location = useLocation()
   if (auth) {
-    return <Navigate to='/login' state={{ from: location }} />
+    return <Navigate to='/login' state={{ from: location }} replace />
   } else if (props.children) {
     return props.children
   } else {

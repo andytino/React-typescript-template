@@ -10,7 +10,8 @@ type RouteType = {
   path: string
   mode: number
   layout: number
-  scopeView?: string // --- Permission to view in Sidebar
+  scopeView?: string
+  inSideBar?: string // --- Permission to view in Sidebar
   element: ReactNode
 }
 
@@ -20,13 +21,6 @@ const Contact = lazy(() => import('../../pages/Contact'))
 
 export const ROUTE_LIST: RouteType[] = [
   {
-    page: 'login',
-    path: '/login',
-    mode: MODE_ROUTE.PUBLIC,
-    layout: MODE_LAYOUT.DEFAULT,
-    element: <Login />
-  },
-  {
     page: 'default',
     path: '/',
     mode: MODE_ROUTE.PRIVATE,
@@ -35,11 +29,20 @@ export const ROUTE_LIST: RouteType[] = [
     element: <Home />
   },
   {
+    page: 'login',
+    path: '/login',
+    mode: MODE_ROUTE.PUBLIC,
+    layout: MODE_LAYOUT.DEFAULT,
+    scopeView: SCOPES.canView,
+    element: <Login />
+  },
+  {
     page: 'home',
     path: '/home',
     mode: MODE_ROUTE.PRIVATE,
     layout: MODE_LAYOUT.MAIN,
     scopeView: SCOPES.canView,
+    inSideBar: SCOPES.canView,
     element: <Home />
   },
   {
@@ -48,6 +51,7 @@ export const ROUTE_LIST: RouteType[] = [
     mode: MODE_ROUTE.PRIVATE,
     layout: MODE_LAYOUT.MAIN,
     scopeView: SCOPES.canViewMiddle,
+    inSideBar: SCOPES.canViewMiddle,
     element: <About />
   },
   {
@@ -56,6 +60,7 @@ export const ROUTE_LIST: RouteType[] = [
     mode: MODE_ROUTE.PRIVATE,
     layout: MODE_LAYOUT.MAIN,
     scopeView: SCOPES.canViewAdvanced,
+    inSideBar: SCOPES.canViewAdvanced,
     element: <Contact />
   },
   {
@@ -63,6 +68,7 @@ export const ROUTE_LIST: RouteType[] = [
     path: '/not_found',
     mode: MODE_ROUTE.PUBLIC,
     layout: MODE_LAYOUT.DEFAULT,
+    scopeView: SCOPES.canView,
     element: <NotFound />
   }
 ]
@@ -72,5 +78,3 @@ ROUTE_LIST.map((i) => (ob[i.page] = i.path))
 export const ROUTE_PATH = {
   ...ob
 }
-
-console.log('ROUTE_PATH', ROUTE_PATH)

@@ -6,8 +6,6 @@ import { useAuth } from '@/hooks/useAuth'
 
 function App() {
   const { user } = useAuth()
-  console.log('app')
-  console.log('useAuth 1', user)
   const routes = useRoutes(createRoutes(user))
   return <div className='App'>{routes}</div>
 }

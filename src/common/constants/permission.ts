@@ -1,4 +1,4 @@
-import { EROLES } from '@/common/ts/enums'
+import { USER_ROLES } from '@/common/ts/enums'
 
 export const SCOPES = {
   canView: 'can-view',
@@ -11,12 +11,12 @@ export const SCOPES = {
 
 export const { canView, canViewMiddle, canViewAdvanced, ...edit } = SCOPES
 
-const FULL_SCOPES = Object.keys(SCOPES)
-const EDIT_SCOPES = Object.keys(edit)
+const FULL_SCOPES = Object.values(SCOPES)
+const EDIT_SCOPES = Object.values(edit)
 
-export const PERMISSIONS = {
-  [EROLES.GUEST]: [canView],
-  [EROLES.USER]: [canView, ...EDIT_SCOPES],
-  [EROLES.ADMIN]: [canView, canViewMiddle, ...EDIT_SCOPES],
-  [EROLES.SUPER_ADMIN]: [...FULL_SCOPES]
+export const PERMISSIONS: { [key in USER_ROLES]: string[] } = {
+  [USER_ROLES.GUEST]: [canView],
+  [USER_ROLES.USER]: [canView, ...EDIT_SCOPES],
+  [USER_ROLES.ADMIN]: [canView, canViewMiddle, ...EDIT_SCOPES],
+  [USER_ROLES.SUPER_ADMIN]: [...FULL_SCOPES]
 }

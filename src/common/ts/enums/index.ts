@@ -8,10 +8,9 @@ export enum MODE_LAYOUT {
   MAIN
 }
 
-export enum EROLES {
+export enum USER_ROLES {
   USER,
   ADMIN,
   SUPER_ADMIN,
-  GUEST,
-  ALL = 99
+  GUEST
 }
