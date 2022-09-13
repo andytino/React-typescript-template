@@ -1,12 +1,9 @@
-export const checkPermission = (
-  permissions: string[] | undefined,
-  scopes: (string | undefined)[]
-) => {
+export const checkPermission = (roles: string[] | undefined, scopes: (string | undefined)[]) => {
   const scopesMap: { [key: string]: boolean } = {}
   scopes.forEach((scope) => {
     if (scope) {
       scopesMap[scope] = true
     }
   })
-  return permissions && permissions.some((permission) => scopesMap[permission])
+  return roles && roles.some((roles) => scopesMap[roles])
 }

@@ -5,7 +5,8 @@ export enum MODE_ROUTE {
 
 export enum MODE_LAYOUT {
   DEFAULT,
-  MAIN
+  MAIN,
+  SUPER_ADMIN
 }
 
 export enum USER_ROLES {

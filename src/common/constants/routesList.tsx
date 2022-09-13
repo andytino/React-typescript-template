@@ -1,4 +1,4 @@
-import { MODE_LAYOUT, MODE_ROUTE } from '@/common/ts/enums'
+import { MODE_ROUTE } from '@/common/ts/enums'
 import Login from '@/pages/Login'
 import NotFound from '@/pages/NotFound'
 import { lazy, ReactNode } from 'react'
@@ -9,8 +9,7 @@ type RouteType = {
   page: string
   path: string
   mode: number
-  layout: number
-  scopeView?: string
+  permission: string
   inSideBar?: string // --- Permission to view in Sidebar
   element: ReactNode
 }
@@ -18,30 +17,28 @@ type RouteType = {
 const Home = lazy(() => import('../../pages/Home'))
 const About = lazy(() => import('../../pages/About'))
 const Contact = lazy(() => import('../../pages/Contact'))
+const Pattern = lazy(() => import('../../pages/Pattern'))
 
 export const ROUTE_LIST: RouteType[] = [
   {
     page: 'default',
     path: '/',
-    mode: MODE_ROUTE.PRIVATE,
-    layout: MODE_LAYOUT.MAIN,
-    scopeView: SCOPES.canView,
+    mode: MODE_ROUTE.PUBLIC,
+    permission: SCOPES.canView,
     element: <Home />
   },
   {
     page: 'login',
     path: '/login',
     mode: MODE_ROUTE.PUBLIC,
-    layout: MODE_LAYOUT.DEFAULT,
-    scopeView: SCOPES.canView,
+    permission: SCOPES.canView,
     element: <Login />
   },
   {
     page: 'home',
     path: '/home',
     mode: MODE_ROUTE.PRIVATE,
-    layout: MODE_LAYOUT.MAIN,
-    scopeView: SCOPES.canView,
+    permission: SCOPES.canView,
     inSideBar: SCOPES.canView,
     element: <Home />
   },
@@ -49,8 +46,7 @@ export const ROUTE_LIST: RouteType[] = [
     page: 'about',
     path: '/about',
     mode: MODE_ROUTE.PRIVATE,
-    layout: MODE_LAYOUT.MAIN,
-    scopeView: SCOPES.canViewMiddle,
+    permission: SCOPES.canViewMiddle,
     inSideBar: SCOPES.canViewMiddle,
     element: <About />
   },
@@ -58,17 +54,23 @@ export const ROUTE_LIST: RouteType[] = [
     page: 'contact',
     path: '/contact',
     mode: MODE_ROUTE.PRIVATE,
-    layout: MODE_LAYOUT.MAIN,
-    scopeView: SCOPES.canViewAdvanced,
-    inSideBar: SCOPES.canViewAdvanced,
+    permission: SCOPES.canView,
+    inSideBar: SCOPES.canView,
     element: <Contact />
+  },
+  {
+    page: 'pattern',
+    path: '/pattern',
+    mode: MODE_ROUTE.PRIVATE,
+    permission: SCOPES.canView,
+    inSideBar: SCOPES.canView,
+    element: <Pattern />
   },
   {
     page: 'notFound',
     path: '/not_found',
     mode: MODE_ROUTE.PUBLIC,
-    layout: MODE_LAYOUT.DEFAULT,
-    scopeView: SCOPES.canView,
+    permission: SCOPES.canView,
     element: <NotFound />
   }
 ]

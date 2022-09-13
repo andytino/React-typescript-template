@@ -37,7 +37,7 @@ export const AuthProvider = (props: { children: ReactNode }) => {
 
   const login = async (data: AuthUser) => {
     setUser(data)
-    navigate(ROUTE_PATH.default, { replace: true })
+    navigate(ROUTE_PATH.home, { replace: true })
   }
 
   const logout = () => {
