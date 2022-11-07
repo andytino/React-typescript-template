@@ -5,15 +5,28 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { BrowserRouter } from 'react-router-dom'
 import { AuthProvider } from './hooks/useAuth'
+import { setupStore } from '@/store'
+import { Provider } from 'react-redux'
+
+if (process.env.REACT_APP_MOCKS_API === 'browser') {
+  console.log('process.env.REACT_APP_MOCKS_API', process.env.REACT_APP_MOCKS_API)
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { worker } = require('./mocks/browser')
+  worker.start()
+}
+
+const store = setupStore()
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 )
 

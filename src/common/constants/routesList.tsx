@@ -4,14 +4,17 @@ import NotFound from '@/pages/NotFound'
 import { lazy, ReactNode } from 'react'
 import { ObjectWithDynamicKey } from '../ts/types'
 import { SCOPES } from '@/common/constants'
+import { RouteObject } from 'react-router-dom'
 
-type RouteType = {
+export type RouteType = {
+  index?: boolean
   page: string
   path: string
   mode: number
   permission: string
-  inSideBar?: string // --- Permission to view in Sidebar
-  element: ReactNode
+  inSideBar?: string // --- Permission to show menu item in Sidebar
+  element?: ReactNode
+  children?: RouteObject[]
 }
 
 const Home = lazy(() => import('../../pages/Home'))
@@ -56,16 +59,26 @@ export const ROUTE_LIST: RouteType[] = [
     mode: MODE_ROUTE.PRIVATE,
     permission: SCOPES.canView,
     inSideBar: SCOPES.canView,
-    element: <Contact />
+    element: <Contact />,
+    children: [
+      {
+        index: true,
+        element: <Contact />
+      },
+      {
+        path: ':id',
+        element: <Pattern />
+      }
+    ]
   },
-  {
-    page: 'pattern',
-    path: '/pattern',
-    mode: MODE_ROUTE.PRIVATE,
-    permission: SCOPES.canView,
-    inSideBar: SCOPES.canView,
-    element: <Pattern />
-  },
+  // {
+  //   page: 'pattern',
+  //   path: '/pattern',
+  //   mode: MODE_ROUTE.PRIVATE,
+  //   permission: SCOPES.canView,
+  //   inSideBar: SCOPES.canView,
+  //   element: <Pattern />
+  // },
   {
     page: 'notFound',
     path: '/not_found',

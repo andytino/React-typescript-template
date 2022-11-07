@@ -4,3 +4,8 @@ export interface AuthUser {
   username: string
   roles: USER_ROLES
 }
+
+export interface UserResponse {
+  id: string
+  name: string
+}
