@@ -41,6 +41,14 @@ export const ROUTE_LIST: RouteType[] = [
     page: 'home',
     path: '/home',
     mode: MODE_ROUTE.PRIVATE,
+    permission: SCOPES.canViewMiddle,
+    inSideBar: SCOPES.canViewMiddle,
+    element: <Home />
+  },
+  {
+    page: 'homes',
+    path: '/homes',
+    mode: MODE_ROUTE.PUBLIC,
     permission: SCOPES.canView,
     inSideBar: SCOPES.canView,
     element: <Home />
@@ -81,7 +89,7 @@ export const ROUTE_LIST: RouteType[] = [
   // },
   {
     page: 'notFound',
-    path: '/not_found',
+    path: '*',
     mode: MODE_ROUTE.PUBLIC,
     permission: SCOPES.canView,
     element: <NotFound />

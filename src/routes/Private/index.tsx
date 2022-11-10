@@ -1,16 +1,18 @@
-import { USER_ROLES } from '@/common/ts/enums'
-import { useAuth } from '@/hooks/useAuth'
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
+import { ROUTE_PATH } from '@/common/constants'
+import { selectToken } from '@/store/authToken'
+import { useAppSelector } from '@/store/hook'
 
 interface PrivateProps {
   children?: JSX.Element
 }
 
 const PrivateRoute = (props: PrivateProps) => {
-  const { user } = useAuth()
+  const { accessToken } = useAppSelector(selectToken)
   const location = useLocation()
-  if (user.roles === USER_ROLES['GUEST']) {
-    return <Navigate to='/login' state={{ from: location }} replace />
+
+  if (!accessToken) {
+    return <Navigate to={ROUTE_PATH.login} state={{ from: location }} replace />
   } else if (props.children) {
     return props.children
   } else {

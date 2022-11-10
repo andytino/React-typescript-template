@@ -1,4 +1,4 @@
-import { MODE_LAYOUT } from '@/common/ts/enums'
+import { MODE_LAYOUT, USER_ROLES } from '@/common/ts/enums'
 import DefaultLayout from '@/layouts/DefaultLayout'
 import MainLayout from '@/layouts/MainLayout'
 import SuperAdminLayout from '@/layouts/SuperAdminLayout'
@@ -11,4 +11,15 @@ const LAYOUT = new Map([
 
 export const formatLayout = (mode: MODE_LAYOUT) => {
   return LAYOUT.get(mode) || LAYOUT.get(MODE_LAYOUT.DEFAULT)
+}
+
+export const ROLE_LAYOUT = {
+  [USER_ROLES.GUEST]: LAYOUT.get(MODE_LAYOUT.DEFAULT),
+  [USER_ROLES.USER]: LAYOUT.get(MODE_LAYOUT.MAIN),
+  [USER_ROLES.ADMIN]: LAYOUT.get(MODE_LAYOUT.MAIN),
+  [USER_ROLES.SUPER_ADMIN]: LAYOUT.get(MODE_LAYOUT.SUPER_ADMIN)
+}
+
+export const formatLayoutWithRole = (role: USER_ROLES) => {
+  return LAYOUT.get(MODE_LAYOUT.DEFAULT)
 }
