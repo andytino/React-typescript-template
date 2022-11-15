@@ -1,2 +1,4 @@
-@import 'normalize.css';
-@import '_variables.global.scss';
+@import './normalize';
+@import './variables.global';
+@import './antd_table';
+@import './antd_button';

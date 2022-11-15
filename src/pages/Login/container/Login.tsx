@@ -1,12 +1,12 @@
-import { USER_ROLES } from '@/common/ts/enums'
-import { useAuth } from '@/hooks/useAuth'
+import { useLogIn } from '@/hooks/useLogin'
 
 const Login = () => {
-  const { login } = useAuth()
+  const { login } = useLogIn()
 
   const handleSubmit = () => {
     login(fakeDataLogin)
   }
+
   return (
     <>
       <div>Login</div>
@@ -18,6 +18,6 @@ const Login = () => {
 export default Login
 
 const fakeDataLogin = {
-  username: 'thang',
-  roles: USER_ROLES['SUPER_ADMIN']
+  email: 'thang@gmail.com',
+  password: 'abc123!'
 }

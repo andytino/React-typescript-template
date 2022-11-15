@@ -1,5 +1,5 @@
 import { USER_ROLES } from '@/common/ts/enums'
-import { useAuth } from '@/hooks/useAuth'
+import { useAuth } from '@/hooks/useAuthContext'
 import { useContext } from 'react'
 
 const Home = () => {
