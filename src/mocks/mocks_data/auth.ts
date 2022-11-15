@@ -8,7 +8,7 @@ export const dummyAuthLogin: IBaseResponse<IVerifyAuth> = {
       id: 1,
       name: 'Andy',
       email: 'superadmin1@example.com',
-      role: USER_ROLES['GUEST'],
+      role: USER_ROLES['SUPER_ADMIN'],
       accessToken:
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
       refreshToken:
@@ -36,7 +36,7 @@ export const dummyAuthMe: IBaseResponse<IAuthMe> = {
       email: 'thang@gmail.com',
       avatar: null,
       status: 0,
-      role: USER_ROLES['GUEST'],
+      role: USER_ROLES['SUPER_ADMIN'],
       createdAt: '',
       updatedAt: '',
       deletedAt: null

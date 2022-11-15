@@ -1,22 +1,22 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import type { RootState } from '@/store'
-import { IAuthMe, IToken } from '@/common/ts/interfaces/auth'
-import { storageKeys } from '@/common/constants'
+import { IToken } from '@/common/ts/interfaces/auth'
+// import { storageKeys } from '@/common/constants'
 import { StorageService } from '@/services/local-storage'
+import { storageKeys } from '@/common/constants/storageKey'
 
-const initToken = {
+const initToken: IToken = {
   accessToken: null,
   refreshToken: null
 }
 
 const initialState = StorageService.get<IToken>(storageKeys.authToken, initToken)
-
 export const authSlice = createSlice({
   name: 'token',
-  initialState,
+  initialState: initialState,
   reducers: {
-    setTokenCredentials: (state, action: PayloadAction<IAuthMe | null>) => ({
+    setTokenCredentials: (state, action: PayloadAction<IToken | null>) => ({
       ...state,
       ...action.payload
     }),

@@ -10,8 +10,8 @@ export type RouteType = {
   index?: boolean
   page: string
   path: string
-  mode: number
-  permission: string
+  mode: number // --- use for layout
+  permission: string // --- use for route
   inSideBar?: string // --- Permission to show menu item in Sidebar
   element?: ReactNode
   children?: RouteObject[]
@@ -41,14 +41,6 @@ export const ROUTE_LIST: RouteType[] = [
     page: 'home',
     path: '/home',
     mode: MODE_ROUTE.PRIVATE,
-    permission: SCOPES.canViewMiddle,
-    inSideBar: SCOPES.canViewMiddle,
-    element: <Home />
-  },
-  {
-    page: 'homes',
-    path: '/homes',
-    mode: MODE_ROUTE.PUBLIC,
     permission: SCOPES.canView,
     inSideBar: SCOPES.canView,
     element: <Home />
@@ -65,8 +57,8 @@ export const ROUTE_LIST: RouteType[] = [
     page: 'contact',
     path: '/contact',
     mode: MODE_ROUTE.PRIVATE,
-    permission: SCOPES.canView,
-    inSideBar: SCOPES.canView,
+    permission: SCOPES.canViewAdvanced,
+    inSideBar: SCOPES.canViewAdvanced,
     element: <Contact />,
     children: [
       {

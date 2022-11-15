@@ -6,6 +6,7 @@ import { StorageService } from '@/services/local-storage'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { setCredentials } from '@/store/user'
 import { useAppDispatch } from '@/store/hook'
+import { setTokenCredentials } from '@/store/authToken'
 
 export const useLogIn = () => {
   const navigate = useNavigate()
@@ -20,8 +21,8 @@ export const useLogIn = () => {
   const login = async (values: IAuthRequest) => {
     try {
       const user = await getUserLogin(values).unwrap()
-      const accessToken = user.result.data?.accessToken
-      const refreshToken = user.result.data?.refreshToken
+      const accessToken = user.result.data?.accessToken || null
+      const refreshToken = user.result.data?.refreshToken || null
 
       // 1: storing to local storage
       StorageService.set(storageKeys.authToken, {
@@ -29,14 +30,24 @@ export const useLogIn = () => {
         refreshToken
       })
 
-      // 2: update profile in store
+      // 2: update key in store
+      if (accessToken && refreshToken) {
+        dispatch(
+          setTokenCredentials({
+            accessToken,
+            refreshToken
+          })
+        )
+      }
+
+      // 3: update profile in store
       const profileResponse = await getProfile().unwrap()
       const profile = profileResponse?.result?.data
       if (profile) {
         dispatch(setCredentials(profile))
       }
 
-      // 3: Move to Home page
+      // 4: Move to Home page
       const temporaryToken = accessToken || ''
       const from = stateLocation?.from
       const navigateState: ILoginNavigateOptionsState = { temporaryToken, from }

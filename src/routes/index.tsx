@@ -7,6 +7,7 @@ import Loading from '@/common/components/Loading/Loading'
 import { checkPermission } from '@/common/utils'
 import { AuthUser } from '@/common/ts/interfaces'
 import { formatLayoutWithRole } from '@/common/constants/layout'
+import NotFound from '@/pages/NotFound'
 
 const renderRoute = (modeRoute: MODE_ROUTE, user: AuthUser, route: RouteType[]) => {
   return route
@@ -15,7 +16,9 @@ const renderRoute = (modeRoute: MODE_ROUTE, user: AuthUser, route: RouteType[]) 
       const permission = checkPermission(PERMISSIONS[user.roles], [e?.permission])
       return {
         ...e,
-        element: <Suspense fallback={<Loading />}>{permission ? e.element : null}</Suspense>,
+        element: (
+          <Suspense fallback={<Loading />}>{permission ? e.element : <NotFound />}</Suspense>
+        ),
         children: e.children && e.children?.length > 0 ? e.children : []
       }
     })
