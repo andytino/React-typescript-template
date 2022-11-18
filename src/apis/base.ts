@@ -49,7 +49,7 @@ export const baseQueryWithReauth: BaseQueryFn<
       extraOptions
     )
 
-    if (refreshResult.data) {
+    if (!refreshResult.error && refreshResult.data) {
       const temp = refreshResult.data as IBaseResponse<IVerifyAuth>
       // store the new token
       const accessToken = temp.result.data?.accessToken || null
