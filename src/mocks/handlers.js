@@ -19,4 +19,8 @@ export const handlers = [
   rest.get('/auth/me', (req, res, ctx) => {
     return res(ctx.status(200), ctx.delay(500), ctx.json(dummyAuthMe))
   })
+
+  // rest.get('notifications/1', (req, res, ctx) => {
+  //   return res(ctx.status(200), ctx.delay(500))
+  // })
 ]

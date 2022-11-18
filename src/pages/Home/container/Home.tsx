@@ -1,9 +1,14 @@
-import { USER_ROLES } from '@/common/ts/enums'
 import { useAuth } from '@/hooks/useAuthContext'
-import { useContext } from 'react'
+// import { useNotifications } from '../hooks/useNotifications'
+import { useUserNotifications } from '../hooks/useUserNotifications'
 
 const Home = () => {
   const { user } = useAuth()
+
+  const { notifications } = useUserNotifications({ id: '1200' })
+  // const { notifications } = useNotifications()
+
+  console.log('notifications', notifications)
 
   return (
     <div>
