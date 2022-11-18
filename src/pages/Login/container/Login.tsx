@@ -1,10 +1,11 @@
 import { useLogIn } from '@/hooks/useLogin'
+import { infoLogin } from '@/mocks/mocks_data/auth'
 
 const Login = () => {
   const { login } = useLogIn()
 
   const handleSubmit = () => {
-    login(fakeDataLogin)
+    login(infoLogin)
   }
 
   return (
@@ -16,8 +17,3 @@ const Login = () => {
 }
 
 export default Login
-
-const fakeDataLogin = {
-  email: 'thang@gmail.com',
-  password: 'abc123!'
-}

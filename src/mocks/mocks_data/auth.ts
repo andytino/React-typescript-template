@@ -1,6 +1,11 @@
 import { USER_ROLES } from '@/common/ts/enums'
 import { IBaseResponse, IAuthResponse, IAuthMe, IVerifyAuth } from '@/common/ts/interfaces'
 
+export const infoLogin = {
+  email: 'thang@gmail.com',
+  password: 'abc123!'
+}
+
 export const dummyAuthLogin: IBaseResponse<IVerifyAuth> = {
   success: true,
   result: {
