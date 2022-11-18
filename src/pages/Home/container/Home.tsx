@@ -1,14 +1,15 @@
 import { useAuth } from '@/hooks/useAuthContext'
 // import { useNotifications } from '../hooks/useNotifications'
-import { useUserNotifications } from '../hooks/useUserNotifications'
+// import { useUserNotifications } from '../hooks/useUserNotifications'
 
 const Home = () => {
   const { user } = useAuth()
 
-  const { notifications } = useUserNotifications({ id: '1200' })
+  // Hooks use Socket --> run source BE
+  // const { notifications } = useUserNotifications({ id: '1200' })
   // const { notifications } = useNotifications()
 
-  console.log('notifications', notifications)
+  // console.log('notifications', notifications)
 
   return (
     <div>

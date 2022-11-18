@@ -6,7 +6,7 @@ import { IToken } from '@/common/ts/interfaces/auth'
 import { StorageService } from '@/services/local-storage'
 import { storageKeys } from '@/common/constants/storageKey'
 
-const initToken: IToken = {
+export const initToken: IToken = {
   accessToken: null,
   refreshToken: null
 }

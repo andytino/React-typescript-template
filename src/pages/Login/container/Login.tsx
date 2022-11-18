@@ -8,10 +8,10 @@ const Login = () => {
   }
 
   return (
-    <>
+    <div>
       <div>Login</div>
       <button onClick={handleSubmit}>Login</button>
-    </>
+    </div>
   )
 }
 
