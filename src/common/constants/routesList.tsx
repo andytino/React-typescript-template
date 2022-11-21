@@ -4,7 +4,6 @@ import NotFound from '@/pages/NotFound'
 import { lazy, ReactNode } from 'react'
 import { ObjectWithDynamicKey } from '../ts/types'
 import { SCOPES } from '@/common/constants'
-import { RouteObject } from 'react-router-dom'
 
 export type RouteType = {
   index?: boolean
@@ -14,7 +13,7 @@ export type RouteType = {
   permission: string // --- use for route
   inSideBar?: string // --- Permission to show menu item in Sidebar
   element?: ReactNode
-  children?: RouteObject[]
+  children?: RouteType[]
 }
 
 const Home = lazy(() => import('../../pages/Home'))
@@ -52,6 +51,13 @@ export const ROUTE_LIST: RouteType[] = [
     permission: SCOPES.canViewMiddle,
     inSideBar: SCOPES.canViewMiddle,
     element: <About />
+    // children: [
+    //   {
+    //     index: true,
+    //     element: <About />,
+    //     inSideBar: SCOPES.canViewAdvanced
+    //   }
+    // ]
   },
   {
     page: 'contact',
@@ -63,10 +69,26 @@ export const ROUTE_LIST: RouteType[] = [
     children: [
       {
         index: true,
+        page: 'contact',
+        path: '/contact',
+        mode: MODE_ROUTE.PRIVATE,
+        permission: SCOPES.canViewAdvanced,
         element: <Contact />
       },
       {
+        page: 'contact',
         path: ':id',
+        mode: MODE_ROUTE.PRIVATE,
+        permission: SCOPES.canViewAdvanced,
+        inSideBar: SCOPES.canViewAdvanced,
+        element: <Pattern />
+      },
+      {
+        page: 'contact',
+        path: 'new',
+        mode: MODE_ROUTE.PRIVATE,
+        permission: SCOPES.canViewAdvanced,
+        inSideBar: SCOPES.canViewAdvanced,
         element: <Pattern />
       }
     ]

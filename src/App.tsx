@@ -8,6 +8,7 @@ function App() {
   const { shortUserProfile } = useAuth()
 
   const routes = useRoutes(createRoutes(shortUserProfile))
+  console.log('routes', createRoutes(shortUserProfile))
 
   return <div className='App'>{routes}</div>
 }
