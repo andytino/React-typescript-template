@@ -4,6 +4,7 @@ import {
   dummyAuthLogin,
   dummyRefreshAuthLogin,
   // dummyfailRefreshAuthLogin,
+  dummyRefreshAuthMe,
   dummyAuthMe
 } from './mocks_data/auth'
 
@@ -24,6 +25,6 @@ export const handlers = [
     return res(ctx.status(401), ctx.delay(500), ctx.json(dummyAuthMe))
   }),
   rest.get('/auth/me-refresh', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.delay(500), ctx.json(dummyAuthMe))
+    return res(ctx.status(200), ctx.delay(500), ctx.json(dummyRefreshAuthMe))
   })
 ]

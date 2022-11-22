@@ -10,27 +10,30 @@ interface IListMenuProps {
   menuName?: string
   menuIndex?: number
   hasSubMenu?: RouteType[] | undefined
+  path: string
 }
 
 const SideBar = () => {
   const { user } = useAuth()
 
-  const ListMenu = ({ route, dept, menuName, menuIndex, hasSubMenu }: IListMenuProps) => {
+  const ListMenu = ({ route, dept, menuName, menuIndex, hasSubMenu, path }: IListMenuProps) => {
     const isShowInSidebar = checkPermission(PERMISSIONS[user.role], [route?.inSideBar])
 
     return (
       <>
         {isShowInSidebar ? (
           <li key={route.page} className={menuName}>
-            <Link to={route.path}>{capitalizeFirstLetter(route.page)}</Link>
+            <Link to={path}>{capitalizeFirstLetter(route.page)}</Link>
+            {hasSubMenu && (
+              <SubListMenu route={route} dept={dept} menuIndex={menuIndex} path={route.path} />
+            )}
           </li>
         ) : null}
-        {hasSubMenu && <SubListMenu route={route} dept={dept} menuIndex={menuIndex} />}
       </>
     )
   }
 
-  const SubListMenu = ({ route, dept, menuIndex }: IListMenuProps) => {
+  const SubListMenu = ({ route, dept, menuIndex, path }: IListMenuProps) => {
     const subDept = dept + 1
 
     return (
@@ -44,6 +47,7 @@ const SideBar = () => {
               dept={subDept}
               menuName={menuName}
               hasSubMenu={route.children}
+              path={`${path}/${child.path}`}
             />
           )
         })}
@@ -64,6 +68,7 @@ const SideBar = () => {
             menuName={menuName}
             menuIndex={idx}
             hasSubMenu={route.children}
+            path={route.path}
           />
         )
       })}

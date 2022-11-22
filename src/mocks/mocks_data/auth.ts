@@ -71,3 +71,19 @@ export const dummyAuthMe: IBaseResponse<IAuthMe> = {
     }
   }
 }
+export const dummyRefreshAuthMe: IBaseResponse<IAuthMe> = {
+  success: true,
+  result: {
+    data: {
+      id: 1,
+      name: 'Andys',
+      email: 'thang@gmail.com',
+      avatar: null,
+      status: 0,
+      role: USER_ROLES['SUPER_ADMIN'],
+      createdAt: '',
+      updatedAt: '',
+      deletedAt: null
+    }
+  }
+}

@@ -10,6 +10,7 @@ interface PrivateProps {
 const PrivateRoute = (props: PrivateProps) => {
   const { accessToken } = useAppSelector(selectToken)
   const location = useLocation()
+  // console.log('props', props)
 
   if (!accessToken) {
     return <Navigate to={ROUTE_PATH.login} state={{ from: location }} replace />

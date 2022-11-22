@@ -7,12 +7,12 @@ import {
 import { StorageService } from '@/services/local-storage'
 import { storageKeys } from '@/common/constants'
 import { typeOf } from '@/common/utils'
-import { IBaseResponse, IToken, IVerifyAuth } from '@/common/ts/interfaces'
+import { IAuthMe, IBaseResponse, IToken, IVerifyAuth } from '@/common/ts/interfaces'
 import { initToken, resetTokenCredentials, setTokenCredentials } from '@/store/authToken'
-import { resetCredentials } from '@/store/user'
+import { resetCredentials, setCredentials } from '@/store/user'
 
 export const baseQuery = fetchBaseQuery({
-  baseUrl: process.env.APP_API_ENDPOINT,
+  baseUrl: process.env.REACT_APP_API_ENDPOINT,
   prepareHeaders: (headers) => {
     const authTokenProfile = StorageService.get<IToken>(storageKeys.authToken, initToken)
     const accessToken: string = authTokenProfile?.accessToken || ''
@@ -38,6 +38,7 @@ export const baseQueryWithReauth: BaseQueryFn<
     result = await baseQuery(argsCustom, api, extraOptions)
   } else {
     const url = args as string
+
     result = await baseQuery(url, api, extraOptions)
   }
 
@@ -76,6 +77,10 @@ export const baseQueryWithReauth: BaseQueryFn<
       result = await baseQuery({ url: 'auth/me-refresh', method: 'GET' }, api, extraOptions)
       // ----
       // result = await baseQuery(args, api, extraOptions)
+      const profile = result.data as IBaseResponse<IAuthMe>
+      if (profile.result.data) {
+        api.dispatch(setCredentials(profile.result.data))
+      }
     } else {
       // logout
       StorageService.remove(storageKeys.authToken)
