@@ -1,9 +1,7 @@
-import { Suspense } from 'react'
 import PublicRoute from './Public'
 import PrivateRoute from './Private'
 import { PERMISSIONS, RouteType, ROUTE_LIST } from '@/common/constants'
 import { MODE_ROUTE } from '@/common/ts/enums'
-import Loading from '@/common/components/Loading/Loading'
 import { checkPermission } from '@/common/utils'
 import { AuthUser } from '@/common/ts/interfaces'
 import { formatLayoutWithRole } from '@/common/constants/layout'
@@ -14,12 +12,11 @@ const renderRoute = (modeRoute: MODE_ROUTE, user: AuthUser, route: RouteType[]) 
     .filter((i) => i.mode === modeRoute)
     .map((e) => {
       const permission = checkPermission(PERMISSIONS[user.roles], [e?.permission])
+      const hasChild = e.children && e.children?.length > 0
       return {
         ...e,
-        element: (
-          <Suspense fallback={<Loading />}>{permission ? e.element : <NotFound />}</Suspense>
-        ),
-        children: e.children && e.children?.length > 0 ? e.children : []
+        element: permission ? e.element : <NotFound />,
+        children: hasChild ? e.children : []
       }
     })
 }

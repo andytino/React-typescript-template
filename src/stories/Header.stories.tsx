@@ -1,3 +1,4 @@
+import { USER_ROLES } from '@/common/ts/enums'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { Header } from '../common/components/Header'
@@ -16,7 +17,9 @@ const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />
 export const LoggedIn = Template.bind({})
 LoggedIn.args = {
   user: {
-    name: 'Jane Doe'
+    id: 0,
+    name: 'GUEST',
+    role: USER_ROLES['GUEST']
   }
 }
 

@@ -4,7 +4,13 @@ import type { RootState } from '@/store'
 import { IAuthMe } from '@/common/ts/interfaces/auth'
 import { USER_ROLES } from '@/common/ts/enums'
 
-export const initialUserState = {
+export interface IUserState {
+  id: number
+  name: string
+  role: USER_ROLES
+}
+
+export const initialUserState: IUserState = {
   id: 0,
   name: 'GUEST',
   role: USER_ROLES['GUEST']

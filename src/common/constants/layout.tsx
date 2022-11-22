@@ -21,5 +21,6 @@ export const ROLE_LAYOUT = {
 }
 
 export const formatLayoutWithRole = (role: USER_ROLES) => {
+  // console.log('role', role)
   return ROLE_LAYOUT[role] || ROLE_LAYOUT[USER_ROLES.GUEST]
 }

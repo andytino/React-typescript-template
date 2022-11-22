@@ -9,9 +9,15 @@ const DefaultLayout = () => {
   const { logout } = useLogout()
   return (
     <>
+      <p>default layout</p>
       {user.id !== initialUserState.id && (
         <>
-          <Header user={user} onLogin={moveToLoginPage} onLogout={logout} />
+          <Header
+            user={user}
+            onLogin={moveToLoginPage}
+            onLogout={logout}
+            layout={'Default layout'}
+          />
           <Outlet />
         </>
       )}

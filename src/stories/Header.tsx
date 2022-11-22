@@ -1,12 +1,9 @@
+import { IUserState } from '@/store/user'
 import { Button } from '../common/components/Button'
 import './header.css'
 
-type User = {
-  name: string
-}
-
 interface HeaderProps {
-  user?: User
+  user?: IUserState
   onLogin: () => void
   onLogout: () => void
   onCreateAccount: () => void

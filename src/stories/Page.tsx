@@ -1,22 +1,19 @@
+import { initialUserState, IUserState } from '@/store/user'
 import React from 'react'
 
 import { Header } from './Header'
 import './page.css'
 
-type User = {
-  name: string
-}
-
 export const Page: React.VFC = () => {
-  const [user, setUser] = React.useState<User>()
+  const [user, setUser] = React.useState<IUserState>()
 
   return (
     <article>
       <Header
         user={user}
-        onLogin={() => setUser({ name: 'Jane Doe' })}
+        onLogin={() => setUser(initialUserState)}
         onLogout={() => setUser(undefined)}
-        onCreateAccount={() => setUser({ name: 'Jane Doe' })}
+        onCreateAccount={() => setUser(initialUserState)}
       />
 
       <section>
