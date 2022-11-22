@@ -13,7 +13,7 @@ const MainLayout = () => {
     <>
       {user.id !== initialUserState.id && (
         <>
-          <Header user={user} onLogin={moveToLoginPage} onLogout={logout} layout={'Main layout'} />
+          <Header onLogin={moveToLoginPage} onLogout={logout} layout={'Main layout'} />
           <SideBar />
           <Outlet />
         </>

@@ -1,0 +1,48 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    text-align: left;
+  }
+}
+
+.pictureContainer {
+  label {
+    position: relative;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 50px;
+    // border: 2px dashed transparent;
+    border-radius: 5px;
+
+    cursor: pointer;
+    color: white;
+
+    background-color: #4158d0;
+    background-image: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+
+    svg {
+      font-size: 1.8rem;
+    }
+  }
+
+  label:hover {
+    box-shadow: 0 5px 10px 5px rgba(140, 140, 140, 0.36);
+  }
+}
+
+.picturePreview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}

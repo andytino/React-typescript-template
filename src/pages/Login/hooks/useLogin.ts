@@ -9,7 +9,6 @@ import { useAppDispatch } from '@/store/hook'
 import { setTokenCredentials } from '@/store/authToken'
 
 export const useLogIn = () => {
-  console.log('ROUTE_PATH', ROUTE_PATH)
   const navigate = useNavigate()
   const location = useLocation()
   const stateLocation = location.state as ILoginNavigateOptionsState

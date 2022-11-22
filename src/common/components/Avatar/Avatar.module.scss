@@ -1,0 +1,27 @@
+.avatar {
+  vertical-align: middle;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+[data-letters]:before {
+  content: attr(data-letters);
+  display: inline-block;
+  font-size: 1em;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  border-radius: 50%;
+  color: white;
+  background: plum;
+  text-align: center;
+  vertical-align: middle;
+  box-shadow: 0 0 5px 0.5px rgba(140, 140, 140, 0.36);
+}
+
+[data-letters]:hover {
+  cursor: pointer;
+  text-align: center;
+}

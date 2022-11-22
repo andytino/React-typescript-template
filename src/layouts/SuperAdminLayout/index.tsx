@@ -12,7 +12,7 @@ const SuperAdminLayout = () => {
     <>
       {user.id !== initialUserState.id && (
         <>
-          <Header user={user} onLogin={moveToLoginPage} onLogout={logout} layout={'Super layout'} />
+          <Header onLogin={moveToLoginPage} onLogout={logout} layout={'Super layout'} />
           <SideBar />
           <Outlet />
         </>

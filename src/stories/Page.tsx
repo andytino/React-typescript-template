@@ -1,11 +1,12 @@
-import { initialUserState, IUserState } from '@/store/user'
+import { IAuthMe } from '@/common/ts/interfaces'
+import { initialUserState } from '@/store/user'
 import React from 'react'
 
 import { Header } from './Header'
 import './page.css'
 
 export const Page: React.VFC = () => {
-  const [user, setUser] = React.useState<IUserState>()
+  const [user, setUser] = React.useState<IAuthMe>()
 
   return (
     <article>

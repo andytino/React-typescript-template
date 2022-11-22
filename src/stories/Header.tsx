@@ -1,9 +1,9 @@
-import { IUserState } from '@/store/user'
+import { IAuthMe } from '@/common/ts/interfaces'
 import { Button } from '../common/components/Button'
 import './header.css'
 
 interface HeaderProps {
-  user?: IUserState
+  user?: IAuthMe
   onLogin: () => void
   onLogout: () => void
   onCreateAccount: () => void
