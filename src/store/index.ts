@@ -5,6 +5,7 @@ import userReducer from './user'
 import { userApi } from '@/apis/user/user'
 import { authApi } from '@/apis/auth/auth'
 import { notificationsApi } from '@/apis/notifications/notifications'
+import { rtkQueryErrorLogger } from '@/apis/error/error'
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -19,6 +20,7 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) =>
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware()
+        .concat(rtkQueryErrorLogger)
         .concat(userApi.middleware)
         .concat(authApi.middleware)
         .concat(notificationsApi.middleware),
