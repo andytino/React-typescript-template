@@ -12,12 +12,7 @@ const DefaultLayout = () => {
       <p>default layout</p>
       {user.id !== initialUserState.id && (
         <>
-          <Header
-            user={user}
-            onLogin={moveToLoginPage}
-            onLogout={logout}
-            layout={'Default layout'}
-          />
+          <Header onLogin={moveToLoginPage} onLogout={logout} layout={'Default layout'} />
           <Outlet />
         </>
       )}
